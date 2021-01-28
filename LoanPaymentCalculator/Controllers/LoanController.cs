@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using LoanPaymentCalculator.Models;
+using LoanPaymentCalculator.ViewModels;
 using LoanPaymentCalculator.Core.Models;
 
 namespace LoanPaymentCalculator.Controllers
