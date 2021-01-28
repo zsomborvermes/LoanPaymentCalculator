@@ -21,11 +21,11 @@ namespace LoanPaymentCalculator.Controllers
         }
 
         [HttpPost, ValidateAntiForgeryToken]
-        public IActionResult Index(LoanViewModel form)
+        public IActionResult Index(LoanViewModel model)
         {
-            BaseLoan loan = _loanFactory.CreateHousingLoan(form.LoanAmount, form.LoanTermInYears);
-            form.Payments = _paymentCalculator.CalculatePayments(loan);
-            return View(form);
+            BaseLoan loan = _loanFactory.CreateHousingLoan(model.LoanAmount, model.LoanTermInYears);
+            model.Payments = _paymentCalculator.CalculatePayments(loan);
+            return View(model);
         }
     }
 }
