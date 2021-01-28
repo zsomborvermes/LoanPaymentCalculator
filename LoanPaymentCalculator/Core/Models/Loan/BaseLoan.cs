@@ -1,5 +1,4 @@
-﻿using System;
-namespace LoanPaymentCalculator.Core.Models
+﻿namespace LoanPaymentCalculator.Core.Models
 {
     public abstract class BaseLoan
     {

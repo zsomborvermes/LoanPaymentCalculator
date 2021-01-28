@@ -1,4 +1,5 @@
 ﻿using System;
+
 namespace LoanPaymentCalculator.Core.Models
 {
     public class PaymentFactory

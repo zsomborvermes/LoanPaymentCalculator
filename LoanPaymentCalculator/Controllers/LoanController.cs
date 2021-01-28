@@ -1,8 +1,6 @@
-﻿using System.Diagnostics;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using LoanPaymentCalculator.Models;
 using LoanPaymentCalculator.Core.Models;
-using System;
 
 namespace LoanPaymentCalculator.Controllers
 {
