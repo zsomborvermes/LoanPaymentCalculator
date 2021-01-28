@@ -3,9 +3,14 @@ namespace LoanPaymentCalculator.Core.Models
 {
     public class LoanFactory
     {
-        public BaseLoan Create(int amount, int durationInYears)
+        public BaseLoan CreateHousingLoan(int loanAmount, int loanTermInYears)
         {
-            return new HousingLoan(amount, durationInYears);
+            return new HousingLoan(loanAmount, loanTermInYears);
+        }
+
+        public BaseLoan CreateCarLoan(int loanAmount, int loanTermInYears)
+        {
+            return new CarLoan(loanAmount, loanTermInYears);
         }
     }
 }

@@ -5,8 +5,8 @@ namespace LoanPaymentCalculator.Core.Models
 {
     public class AmortizedMonthlyEqualTotalPaymentCalculator : IPaymentCalculator
     {
+        private readonly PaymentFactory _paymentFactory;
         private BaseLoan _loan;
-        private PaymentFactory _paymentFactory;
 
         public AmortizedMonthlyEqualTotalPaymentCalculator(PaymentFactory paymentFactory)
         {

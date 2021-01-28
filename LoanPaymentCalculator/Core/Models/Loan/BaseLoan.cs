@@ -7,10 +7,10 @@ namespace LoanPaymentCalculator.Core.Models
         public int LoanTermInYears { get; set; }
         public double Interest { get; protected set; }
 
-        public BaseLoan(int amount, int durationInYears)
+        public BaseLoan(int loanAmount, int loanTermInYears)
         {
-            LoanAmount = amount;
-            LoanTermInYears = durationInYears;
+            LoanAmount = loanAmount;
+            LoanTermInYears = loanTermInYears;
         }
 
         public int LoanTermInMonths

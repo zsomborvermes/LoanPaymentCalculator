@@ -1,6 +1,5 @@
 ﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 using LoanPaymentCalculator.Models;
 using LoanPaymentCalculator.Core.Models;
 using System;
@@ -26,7 +25,7 @@ namespace LoanPaymentCalculator.Controllers
         [HttpPost, ValidateAntiForgeryToken]
         public IActionResult Index(LoanViewModel form)
         {
-            BaseLoan loan = _loanFactory.Create(form.LoanAmount, form.LoanTermInYears);
+            BaseLoan loan = _loanFactory.CreateHousingLoan(form.LoanAmount, form.LoanTermInYears);
             form.Payments = _paymentCalculator.CalculatePayments(loan);
             return View(form);
         }
