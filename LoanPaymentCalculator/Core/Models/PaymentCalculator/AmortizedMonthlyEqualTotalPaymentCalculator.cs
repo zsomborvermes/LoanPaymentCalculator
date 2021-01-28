@@ -3,9 +3,15 @@ using System.Collections.Generic;
 
 namespace LoanPaymentCalculator.Core.Models
 {
-    public class AmortizedMonthlyPaymentCalculator : IPaymentCalculator
+    public class AmortizedMonthlyEqualTotalPaymentCalculator : IPaymentCalculator
     {
         private BaseLoan _loan;
+        private PaymentFactory _paymentFactory;
+
+        public AmortizedMonthlyEqualTotalPaymentCalculator(PaymentFactory paymentFactory)
+        {
+            _paymentFactory = paymentFactory;
+        }
 
         public List<Payment> CalculatePayments(BaseLoan loan)
         {
@@ -18,11 +24,11 @@ namespace LoanPaymentCalculator.Core.Models
             double amountLeft = _loan.LoanAmount;
             double payment = calculateMonthlyPayment();
 
-            for (int i = 1; i <= _loan.LoanTermInMonths; i++)
+            for (int currentMonth = 1; currentMonth <= _loan.LoanTermInMonths; currentMonth++)
             {
                 monthlyInterest = _loan.Interest / 12 * amountLeft;
 
-                if (i != _loan.LoanTermInMonths)
+                if (currentMonth != _loan.LoanTermInMonths)
                 {
                     principal = payment - monthlyInterest;
                 }
@@ -34,13 +40,13 @@ namespace LoanPaymentCalculator.Core.Models
 
                 amountLeft -= principal;
 
-                Payment paymentToAdd = new Payment() {
-                    NumberOfMonth = i,
-                    AmountToPay=Math.Round(payment, 2),
-                    Principal=Math.Round(principal, 2),
-                    Interest=Math.Round(monthlyInterest, 2),
-                    AmountLeft=Math.Round(amountLeft, 2)
-                };
+                Payment paymentToAdd = _paymentFactory.Create(
+                    DateTime.Now.AddMonths(currentMonth),
+                    payment,
+                    principal,
+                    monthlyInterest,
+                    amountLeft
+                    );
 
                 payments.Add(paymentToAdd);
             }

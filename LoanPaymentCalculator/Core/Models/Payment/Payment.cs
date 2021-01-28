@@ -3,7 +3,7 @@ namespace LoanPaymentCalculator.Core.Models
 {
     public class Payment
     {
-        public int NumberOfMonth { get; set; }
+        public string Date { get; set; }
         public double AmountToPay { get; set; }
         public double Interest { get; set; }
         public double Principal { get; set; }

@@ -10,5 +10,6 @@
     <Folder Include="Core\Models\" />
     <Folder Include="Core\Models\Loan\" />
     <Folder Include="Core\Models\PaymentCalculator\" />
+    <Folder Include="Core\Models\Payment\" />
   </ItemGroup>
 </Project>

@@ -29,7 +29,7 @@
 
         <table class="table table-striped table-hover">
             <tr>
-                <th>Month</th>
+                <th>Date</th>
                 <th>Payment</th>
                 <th>Interest</th>
                 <th>Principal</th>
@@ -37,7 +37,7 @@
             </tr>
             @foreach (Payment payment in Model.Payments) {
                 <tr>
-                    <td>@payment.NumberOfMonth.</td>
+                    <td>@payment.Date</td>
                     <td>@payment.AmountToPay SEK</td>
                     <td>@payment.Interest SEK</td>
                     <td>@payment.Principal SEK</td>

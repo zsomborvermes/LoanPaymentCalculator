@@ -9,13 +9,13 @@ namespace LoanPaymentCalculator.Controllers
 {
     public class LoanController : Controller
     {
-        private readonly ILogger<LoanController> _logger;
         private readonly IPaymentCalculator _paymentCalculator;
+        private readonly LoanFactory _loanFactory;
 
-        public LoanController(ILogger<LoanController> logger, IPaymentCalculator paymentCalculator)
+        public LoanController(IPaymentCalculator paymentCalculator, LoanFactory loanFactory)
         {
-            _logger = logger;
             _paymentCalculator = paymentCalculator;
+            _loanFactory = loanFactory;
         }
 
         public IActionResult Index()
@@ -26,7 +26,7 @@ namespace LoanPaymentCalculator.Controllers
         [HttpPost, ValidateAntiForgeryToken]
         public IActionResult Index(LoanViewModel form)
         {
-            BaseLoan loan = new HousingLoan(form.LoanAmount, form.LoanTermInYears);
+            BaseLoan loan = _loanFactory.Create(form.LoanAmount, form.LoanTermInYears);
             form.Payments = _paymentCalculator.CalculatePayments(loan);
             return View(form);
         }
