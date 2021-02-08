@@ -2,7 +2,7 @@
 
 Demo: https://loanpaymentcalculator.azurewebsites.net/
 
-Task
+## Task
 
 Create an application which can be used for calculation of the cost from a housing loan.
 The application should have a simple user interface (web or console) where the user can specify the desired
